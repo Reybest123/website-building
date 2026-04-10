@@ -1,0 +1,961 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your Business Here — Demo by Liam</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --black: #0a0a0a;
+    --white: #f5f2ed;
+    --accent: #e8500a;
+    --accent2: #f7c948;
+    --mid: #1a1a1a;
+    --muted: #888;
+    --card: #141414;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'Outfit', sans-serif;
+    font-weight: 400;
+    overflow-x: hidden;
+  }
+
+  /* ---- DEMO BANNER ---- */
+  .demo-banner {
+    background: var(--accent);
+    color: #fff;
+    text-align: center;
+    padding: 10px 20px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+  .demo-banner span { opacity: 0.8; font-weight: 400; text-transform: none; letter-spacing: 0; }
+
+  /* ---- NAV ---- */
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 60px;
+    border-bottom: 1px solid #222;
+  }
+
+  .nav-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    letter-spacing: 0.05em;
+    color: var(--white);
+  }
+  .nav-logo span { color: var(--accent); }
+
+  .nav-links {
+    display: flex;
+    gap: 36px;
+    list-style: none;
+  }
+  .nav-links a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--white); }
+
+  .nav-cta {
+    background: var(--accent);
+    color: #fff !important;
+    padding: 10px 22px !important;
+    border-radius: 4px;
+    font-weight: 600 !important;
+    color: var(--white) !important;
+  }
+  .nav-cta:hover { background: #c73f00; color: #fff !important; }
+
+  /* ---- HERO ---- */
+  .hero {
+    min-height: 92vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 80px 60px;
+    gap: 60px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -200px; right: -200px;
+    width: 700px; height: 700px;
+    background: radial-gradient(circle, rgba(232,80,10,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(232,80,10,0.15);
+    border: 1px solid rgba(232,80,10,0.3);
+    color: var(--accent);
+    padding: 6px 14px;
+    border-radius: 100px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 28px;
+  }
+  .hero-badge::before {
+    content: '';
+    width: 6px; height: 6px;
+    background: var(--accent);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(1.4); }
+  }
+
+  .hero h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(64px, 8vw, 110px);
+    line-height: 0.92;
+    letter-spacing: 0.02em;
+    margin-bottom: 28px;
+  }
+
+  .hero h1 em {
+    font-style: normal;
+    color: var(--accent);
+    display: block;
+  }
+
+  .hero p {
+    font-size: 17px;
+    line-height: 1.7;
+    color: #aaa;
+    max-width: 480px;
+    margin-bottom: 40px;
+  }
+
+  .hero-buttons {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    background: var(--accent);
+    color: #fff;
+    padding: 16px 32px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 15px;
+    letter-spacing: 0.02em;
+    transition: all 0.2s;
+    display: inline-block;
+  }
+  .btn-primary:hover { background: #c73f00; transform: translateY(-1px); }
+
+  .btn-outline {
+    border: 1px solid #333;
+    color: var(--white);
+    padding: 16px 32px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 15px;
+    transition: all 0.2s;
+    display: inline-block;
+  }
+  .btn-outline:hover { border-color: var(--white); }
+
+  /* ---- HERO VISUAL ---- */
+  .hero-visual {
+    position: relative;
+  }
+
+  .hero-card-main {
+    background: var(--card);
+    border: 1px solid #2a2a2a;
+    border-radius: 16px;
+    padding: 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-card-main::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+  }
+
+  .card-icon {
+    width: 56px; height: 56px;
+    background: rgba(232,80,10,0.15);
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 26px;
+    margin-bottom: 20px;
+  }
+
+  .card-label {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 10px;
+  }
+
+  .card-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 42px;
+    letter-spacing: 0.03em;
+    margin-bottom: 6px;
+  }
+
+  .card-sub {
+    color: var(--accent);
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 24px;
+  }
+
+  .card-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 28px;
+  }
+
+  .stat {
+    background: #1e1e1e;
+    border-radius: 8px;
+    padding: 14px;
+  }
+  .stat-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 32px;
+    color: var(--white);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .stat-label { font-size: 12px; color: var(--muted); }
+
+  .card-phone {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: var(--accent);
+    border-radius: 8px;
+    padding: 14px 18px;
+    font-weight: 600;
+    font-size: 16px;
+  }
+
+  .floating-badge {
+    position: absolute;
+    top: -16px;
+    right: 24px;
+    background: var(--accent2);
+    color: #1a0f00;
+    padding: 8px 16px;
+    border-radius: 100px;
+    font-size: 13px;
+    font-weight: 700;
+    box-shadow: 0 4px 20px rgba(247,201,72,0.3);
+  }
+
+  .review-float {
+    position: absolute;
+    bottom: -20px;
+    left: -20px;
+    background: var(--mid);
+    border: 1px solid #2a2a2a;
+    border-radius: 12px;
+    padding: 16px 20px;
+    min-width: 200px;
+  }
+
+  .stars { color: var(--accent2); font-size: 14px; margin-bottom: 6px; }
+  .review-text { font-size: 13px; color: #ccc; margin-bottom: 6px; line-height: 1.4; }
+  .review-author { font-size: 12px; color: var(--muted); }
+
+  /* ---- TRUST BAR ---- */
+  .trust-bar {
+    padding: 28px 60px;
+    border-top: 1px solid #1e1e1e;
+    border-bottom: 1px solid #1e1e1e;
+    display: flex;
+    gap: 48px;
+    align-items: center;
+    overflow-x: auto;
+  }
+
+  .trust-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .trust-icon {
+    width: 36px; height: 36px;
+    background: rgba(232,80,10,0.12);
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px;
+  }
+
+  .trust-label { font-size: 13px; font-weight: 600; color: #ccc; }
+  .trust-sub { font-size: 11px; color: var(--muted); }
+
+  /* ---- SERVICES ---- */
+  .section {
+    padding: 100px 60px;
+  }
+
+  .section-eyebrow {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 16px;
+  }
+
+  .section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(42px, 5vw, 68px);
+    letter-spacing: 0.02em;
+    line-height: 1;
+    margin-bottom: 16px;
+  }
+
+  .section-sub {
+    font-size: 16px;
+    color: #888;
+    max-width: 500px;
+    line-height: 1.7;
+    margin-bottom: 60px;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    background: #1e1e1e;
+    border-radius: 16px;
+    overflow: hidden;
+  }
+
+  .service-item {
+    background: var(--black);
+    padding: 36px 32px;
+    transition: background 0.2s;
+    cursor: default;
+  }
+  .service-item:hover { background: #111; }
+
+  .service-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 48px;
+    color: #2a2a2a;
+    line-height: 1;
+    margin-bottom: 16px;
+  }
+
+  .service-icon { font-size: 28px; margin-bottom: 14px; display: block; }
+
+  .service-title {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: var(--white);
+  }
+
+  .service-desc {
+    font-size: 14px;
+    color: #666;
+    line-height: 1.6;
+  }
+
+  /* ---- WHY ---- */
+  .why-section {
+    padding: 100px 60px;
+    background: var(--mid);
+  }
+
+  .why-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .big-number {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 180px;
+    line-height: 0.85;
+    color: #1e1e1e;
+    position: absolute;
+    top: -20px;
+    left: -10px;
+    z-index: 0;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  .why-left { position: relative; }
+
+  .why-points { position: relative; z-index: 1; }
+
+  .why-point {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    margin-bottom: 36px;
+    padding-bottom: 36px;
+    border-bottom: 1px solid #2a2a2a;
+  }
+  .why-point:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+
+  .why-dot {
+    width: 40px; height: 40px;
+    background: var(--accent);
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .why-point-title { font-size: 17px; font-weight: 600; margin-bottom: 6px; }
+  .why-point-desc { font-size: 14px; color: #777; line-height: 1.6; }
+
+  .why-right { }
+
+  .testimonial-card {
+    background: var(--black);
+    border: 1px solid #2a2a2a;
+    border-radius: 16px;
+    padding: 36px;
+    margin-bottom: 20px;
+  }
+
+  .quote-mark {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 80px;
+    color: var(--accent);
+    line-height: 0.7;
+    margin-bottom: 16px;
+    display: block;
+  }
+
+  .quote-text {
+    font-size: 18px;
+    line-height: 1.6;
+    color: #ccc;
+    margin-bottom: 24px;
+  }
+
+  .quote-author {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .author-avatar {
+    width: 44px; height: 44px;
+    background: #2a2a2a;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700;
+    font-size: 15px;
+    color: var(--accent);
+  }
+
+  .author-name { font-weight: 600; font-size: 15px; }
+  .author-loc { font-size: 13px; color: var(--muted); }
+
+  .rating-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: var(--black);
+    border: 1px solid #2a2a2a;
+    border-radius: 12px;
+    padding: 20px 24px;
+  }
+
+  .rating-big {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 52px;
+    color: var(--white);
+    line-height: 1;
+  }
+
+  .rating-stars { color: var(--accent2); font-size: 20px; margin-bottom: 4px; }
+  .rating-sub { font-size: 13px; color: var(--muted); }
+
+  /* ---- PROCESS ---- */
+  .process-section { padding: 100px 60px; }
+
+  .process-steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    position: relative;
+    margin-top: 60px;
+  }
+
+  .process-steps::before {
+    content: '';
+    position: absolute;
+    top: 28px;
+    left: 10%;
+    right: 10%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #333, #333, #333, transparent);
+    z-index: 0;
+  }
+
+  .process-step {
+    text-align: center;
+    padding: 0 20px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .step-circle {
+    width: 56px; height: 56px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 24px;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    border: 2px solid #333;
+    background: var(--black);
+    transition: all 0.3s;
+  }
+
+  .step-circle.active {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #fff;
+    box-shadow: 0 0 30px rgba(232,80,10,0.4);
+  }
+
+  .step-title { font-size: 16px; font-weight: 600; margin-bottom: 8px; }
+  .step-desc { font-size: 13px; color: #666; line-height: 1.5; }
+
+  /* ---- CTA ---- */
+  .cta-section {
+    padding: 120px 60px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-section::before {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 800px; height: 400px;
+    background: radial-gradient(ellipse, rgba(232,80,10,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .cta-section h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(52px, 7vw, 96px);
+    letter-spacing: 0.02em;
+    line-height: 1;
+    margin-bottom: 24px;
+    position: relative;
+  }
+
+  .cta-section h2 span { color: var(--accent); }
+
+  .cta-section p {
+    font-size: 18px;
+    color: #888;
+    margin-bottom: 48px;
+    position: relative;
+  }
+
+  .cta-buttons {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+    position: relative;
+  }
+
+  .btn-large {
+    padding: 20px 44px;
+    font-size: 17px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: all 0.2s;
+    display: inline-block;
+  }
+
+  /* ---- FOOTER ---- */
+  footer {
+    padding: 48px 60px;
+    border-top: 1px solid #1e1e1e;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  footer p { font-size: 13px; color: #555; }
+  footer p a { color: var(--accent); text-decoration: none; }
+
+  /* ---- MADE BY ---- */
+  .made-by {
+    background: rgba(232,80,10,0.08);
+    border-top: 1px solid rgba(232,80,10,0.2);
+    padding: 20px 60px;
+    text-align: center;
+    font-size: 13px;
+    color: #666;
+  }
+  .made-by strong { color: var(--accent); }
+
+  /* ---- ANIMATIONS ---- */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeUp 0.6s ease forwards;
+  }
+
+  @keyframes fadeUp {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .delay-1 { animation-delay: 0.1s; }
+  .delay-2 { animation-delay: 0.2s; }
+  .delay-3 { animation-delay: 0.3s; }
+  .delay-4 { animation-delay: 0.4s; }
+  .delay-5 { animation-delay: 0.5s; }
+
+  @media (max-width: 900px) {
+    nav { padding: 20px 24px; }
+    .nav-links { display: none; }
+    .hero { grid-template-columns: 1fr; padding: 60px 24px; }
+    .hero-visual { display: none; }
+    .section, .process-section, .cta-section { padding: 60px 24px; }
+    .trust-bar { padding: 20px 24px; }
+    .why-section { padding: 60px 24px; }
+    .why-grid { grid-template-columns: 1fr; gap: 40px; }
+    .services-grid { grid-template-columns: 1fr; }
+    .process-steps { grid-template-columns: 1fr 1fr; }
+    .process-steps::before { display: none; }
+    footer { padding: 32px 24px; flex-direction: column; text-align: center; }
+    .made-by { padding: 20px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="demo-banner">
+  ✦ Demo Site &nbsp;—&nbsp; <span>This is what your business could look like. Site built by Liam · Contact: <strong>liamspencer549@gmail.com</strong></span>
+</div>
+
+<nav>
+  <div class="nav-logo">Your<span>Trade</span>Co</div>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#process">How It Works</a></li>
+    <li><a href="#contact" class="nav-cta">Get a Quote</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div>
+    <div class="hero-badge fade-up">Available 24/7 in Brisbane</div>
+    <h1 class="fade-up delay-1">
+      Fast.<br>
+      Reliable.<br>
+      <em>Fixed Right.</em>
+    </h1>
+    <p class="fade-up delay-2">Brisbane's most trusted local plumber. We show up on time, price upfront, and leave your home cleaner than we found it.</p>
+    <div class="hero-buttons fade-up delay-3">
+      <a href="#contact" class="btn-primary">Get a Free Quote</a>
+      <a href="tel:0400000000" class="btn-outline">Call Now</a>
+    </div>
+  </div>
+
+  <div class="hero-visual fade-up delay-4">
+    <div class="floating-badge">5.0 Rated</div>
+    <div class="hero-card-main">
+      <div class="card-icon" style="font-size:18px;font-weight:700;letter-spacing:0.05em;color:var(--accent);">LIC</div>
+      <div class="card-label">Licensed Plumber</div>
+      <div class="card-name">YOUR BUSINESS</div>
+      <div class="card-sub">Serving Brisbane & Surrounds</div>
+      <div class="card-stats">
+        <div class="stat">
+          <div class="stat-num">12+</div>
+          <div class="stat-label">Years Experience</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">850+</div>
+          <div class="stat-label">Jobs Completed</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">24/7</div>
+          <div class="stat-label">Emergency Service</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">100%</div>
+          <div class="stat-label">Satisfaction Rate</div>
+        </div>
+      </div>
+      <div class="card-phone">
+        04XX XXX XXX
+      </div>
+    </div>
+    <div class="review-float">
+      <div class="stars">★★★★★</div>
+      <div class="review-text">"Fixed our burst pipe in under an hour. Absolute legend."</div>
+      <div class="review-author">— Sarah M., Paddington</div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-item">
+    <div class="trust-icon" style="font-size:14px;font-weight:700;color:var(--accent);">QLD</div>
+    <div>
+      <div class="trust-label">QBCC Licensed</div>
+      <div class="trust-sub">Lic. No. XXXXXXX</div>
+    </div>
+  </div>
+  <div class="trust-item">
+    <div class="trust-icon" style="font-size:15px;font-weight:700;color:var(--accent);">24H</div>
+    <div>
+      <div class="trust-label">Same Day Service</div>
+      <div class="trust-sub">Usually within 2 hours</div>
+    </div>
+  </div>
+  <div class="trust-item">
+    <div class="trust-icon" style="font-size:15px;font-weight:700;color:var(--accent);">$</div>
+    <div>
+      <div class="trust-label">Upfront Pricing</div>
+      <div class="trust-sub">No hidden fees, ever</div>
+    </div>
+  </div>
+  <div class="trust-item">
+    <div class="trust-icon" style="font-size:13px;font-weight:700;color:var(--accent);">INS</div>
+    <div>
+      <div class="trust-label">Fully Insured</div>
+      <div class="trust-sub">$10M public liability</div>
+    </div>
+  </div>
+  <div class="trust-item">
+    <div class="trust-icon" style="font-size:14px;font-weight:700;color:var(--accent);">GTD</div>
+    <div>
+      <div class="trust-label">Workmanship Guarantee</div>
+      <div class="trust-sub">12 months on all jobs</div>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section class="section" id="services">
+  <div class="section-eyebrow">What We Do</div>
+  <h2 class="section-title">Every Job.<br>Done Properly.</h2>
+  <p class="section-sub">From a dripping tap to a full bathroom reno — we handle it all with the same care and professionalism.</p>
+
+  <div class="services-grid">
+    <div class="service-item">
+      <div class="service-num">01</div>
+      <span class="service-icon" style="font-size:13px;font-weight:700;color:var(--accent);letter-spacing:0.06em;">DRAIN</span>
+      <div class="service-title">Blocked Drains</div>
+      <div class="service-desc">Fast drain clearing using the latest equipment. No blockage too big, no drain too small.</div>
+    </div>
+    <div class="service-item">
+      <div class="service-num">02</div>
+      <span class="service-icon" style="font-size:13px;font-weight:700;color:var(--accent);letter-spacing:0.06em;">H2O</span>
+      <div class="service-title">Hot Water Systems</div>
+      <div class="service-desc">Install, repair or replace all brands. Gas, electric, solar and heat pump systems.</div>
+    </div>
+    <div class="service-item">
+      <div class="service-num">03</div>
+      <span class="service-icon" style="font-size:13px;font-weight:700;color:var(--accent);letter-spacing:0.06em;">SOS</span>
+      <div class="service-title">Emergency Plumbing</div>
+      <div class="service-desc">Burst pipes, gas leaks, flooding. We're available 24/7 and usually on site within 60 minutes.</div>
+    </div>
+    <div class="service-item">
+      <div class="service-num">04</div>
+      <span class="service-icon" style="font-size:13px;font-weight:700;color:var(--accent);letter-spacing:0.06em;">GAS</span>
+      <div class="service-title">Gas Fitting</div>
+      <div class="service-desc">Licensed gas fitting for appliances, cooktops, BBQs, heaters and hot water systems.</div>
+    </div>
+    <div class="service-item">
+      <div class="service-num">05</div>
+      <span class="service-icon" style="font-size:13px;font-weight:700;color:var(--accent);letter-spacing:0.06em;">RENO</span>
+      <div class="service-title">Bathroom Renovations</div>
+      <div class="service-desc">Complete bathroom renos from planning to final fixture. We work with your builder or solo.</div>
+    </div>
+    <div class="service-item">
+      <div class="service-num">06</div>
+      <span class="service-icon" style="font-size:13px;font-weight:700;color:var(--accent);letter-spacing:0.06em;">INSP</span>
+      <div class="service-title">Pre-Purchase Inspections</div>
+      <div class="service-desc">Know exactly what you're buying. Detailed plumbing report before you sign anything.</div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY / TESTIMONIALS -->
+<section class="why-section" id="about">
+  <div class="why-grid">
+    <div class="why-left">
+      <div class="big-number">WHY</div>
+      <div class="why-points">
+        <div class="section-eyebrow" style="margin-bottom: 20px;">Why Choose Us</div>
+        <div class="why-point">
+          <div class="why-dot" style="font-size:13px;font-weight:700;letter-spacing:0.04em;">ON</div>
+          <div>
+            <div class="why-point-title">We Actually Show Up</div>
+            <div class="why-point-desc">No ghosting, no 4-hour windows. You'll get a text when we're on the way and we'll be there when we say.</div>
+          </div>
+        </div>
+        <div class="why-point">
+          <div class="why-dot" style="font-size:13px;font-weight:700;letter-spacing:0.04em;">$</div>
+          <div>
+            <div class="why-point-title">Straight-Up Pricing</div>
+            <div class="why-point-desc">You'll know the price before we touch a single pipe. No invoices with surprises at the end.</div>
+          </div>
+        </div>
+        <div class="why-point">
+          <div class="why-dot" style="font-size:13px;font-weight:700;letter-spacing:0.04em;">OK</div>
+          <div>
+            <div class="why-point-title">Clean Work, Clean Site</div>
+            <div class="why-point-desc">We treat your home with respect. Drop sheets, shoe covers, full clean-up when we leave.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="why-right">
+      <div class="testimonial-card">
+        <span class="quote-mark">"</span>
+        <div class="quote-text">Called at 7am about a burst pipe. He was there by 8:15, had it fixed by 9, and even cleaned up the mess in the laundry. Absolute champion.</div>
+        <div class="quote-author">
+          <div class="author-avatar">DK</div>
+          <div>
+            <div class="author-name">David K.</div>
+            <div class="author-loc">Paddington, Brisbane</div>
+          </div>
+          <div style="margin-left: auto; color: #f7c948; font-size: 14px;">★★★★★</div>
+        </div>
+      </div>
+
+      <div class="rating-row">
+        <div>
+          <div class="rating-big">4.9</div>
+        </div>
+        <div>
+          <div class="rating-stars">★★★★★</div>
+          <div style="font-size: 14px; font-weight: 600; margin-bottom: 2px;">Google Rating</div>
+          <div class="rating-sub">Based on 120+ reviews</div>
+        </div>
+        <div style="margin-left: auto; font-size: 13px; color: var(--muted); text-align: right; line-height: 1.5;">
+          94% would<br>recommend
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process-section" id="process">
+  <div style="text-align: center;">
+    <div class="section-eyebrow">How It Works</div>
+    <h2 class="section-title">Simple As.</h2>
+    <p class="section-sub" style="margin: 0 auto 0;">Four steps from problem to fixed.</p>
+  </div>
+
+  <div class="process-steps">
+    <div class="process-step">
+      <div class="step-circle active">1</div>
+      <div class="step-title">You Call or Text</div>
+      <div class="step-desc">Reach us anytime. We pick up or call back within 15 minutes.</div>
+    </div>
+    <div class="process-step">
+      <div class="step-circle">2</div>
+      <div class="step-title">We Give a Quote</div>
+      <div class="step-desc">Upfront fixed price over the phone or on-site. No guessing.</div>
+    </div>
+    <div class="process-step">
+      <div class="step-circle">3</div>
+      <div class="step-title">We Show Up</div>
+      <div class="step-desc">On time, fully stocked van, ready to fix it first visit.</div>
+    </div>
+    <div class="process-step">
+      <div class="step-circle">4</div>
+      <div class="step-title">Job Done Right</div>
+      <div class="step-desc">Clean site, compliance cert where needed, 12-month guarantee.</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="contact">
+  <h2>Ready to Get<br><span>It Fixed?</span></h2>
+  <p>Call now for a free quote. We're ready when you are.</p>
+  <div class="cta-buttons">
+    <a href="tel:0400000000" class="btn-large btn-primary">Call 04XX XXX XXX</a>
+    <a href="mailto:liamspencer549@gmail.com" class="btn-large btn-outline">Send a Message</a>
+  </div>
+</section>
+
+<footer>
+  <div>
+    <div class="nav-logo" style="font-size: 22px; margin-bottom: 8px;">Your<span style="color: var(--accent)">Trade</span>Co</div>
+    <p>Brisbane & Surrounds &nbsp;·&nbsp; QBCC Lic. No. XXXXXXX &nbsp;·&nbsp; ABN XX XXX XXX XXX</p>
+  </div>
+  <p>© 2025 YourTradeCo &nbsp;·&nbsp; <a href="#">Privacy</a> &nbsp;·&nbsp; <a href="#">Terms</a></p>
+</footer>
+
+<div class="made-by">
+  ✦ &nbsp; This is a <strong>demo site</strong> — want a site like this for your business? Contact <strong>Liam</strong> at <strong>liamspencer549@gmail.com</strong> &nbsp;·&nbsp; Starting from $300
+</div>
+
+</body>
+</html>
