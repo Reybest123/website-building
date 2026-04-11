@@ -3,958 +3,311 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Your Business Here — Demo by Liam</title>
+<title>Your Business Name — Local Tradie Brisbane</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:wght@700;900&display=swap" rel="stylesheet">
 <style>
-  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
-  :root {
-    --black: #0a0a0a;
-    --white: #f5f2ed;
-    --accent: #e8500a;
-    --accent2: #f7c948;
-    --mid: #1a1a1a;
-    --muted: #888;
-    --card: #141414;
-  }
-
-  html { scroll-behavior: smooth; }
-
-  body {
-    background: var(--black);
-    color: var(--white);
-    font-family: 'Outfit', sans-serif;
-    font-weight: 400;
-    overflow-x: hidden;
-  }
-
-  /* ---- DEMO BANNER ---- */
-  .demo-banner {
-    background: var(--accent);
-    color: #fff;
-    text-align: center;
-    padding: 10px 20px;
-    font-size: 13px;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-  }
-  .demo-banner span { opacity: 0.8; font-weight: 400; text-transform: none; letter-spacing: 0; }
-
-  /* ---- NAV ---- */
-  nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 24px 60px;
-    border-bottom: 1px solid #222;
-  }
-
-  .nav-logo {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 28px;
-    letter-spacing: 0.05em;
-    color: var(--white);
-  }
-  .nav-logo span { color: var(--accent); }
-
-  .nav-links {
-    display: flex;
-    gap: 36px;
-    list-style: none;
-  }
-  .nav-links a {
-    color: var(--muted);
-    text-decoration: none;
-    font-size: 14px;
-    font-weight: 500;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    transition: color 0.2s;
-  }
-  .nav-links a:hover { color: var(--white); }
-
-  .nav-cta {
-    background: var(--accent);
-    color: #fff !important;
-    padding: 10px 22px !important;
-    border-radius: 4px;
-    font-weight: 600 !important;
-    color: var(--white) !important;
-  }
-  .nav-cta:hover { background: #c73f00; color: #fff !important; }
-
-  /* ---- HERO ---- */
-  .hero {
-    min-height: 92vh;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    align-items: center;
-    padding: 80px 60px;
-    gap: 60px;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .hero::before {
-    content: '';
-    position: absolute;
-    top: -200px; right: -200px;
-    width: 700px; height: 700px;
-    background: radial-gradient(circle, rgba(232,80,10,0.12) 0%, transparent 70%);
-    pointer-events: none;
-  }
-
-  .hero-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: rgba(232,80,10,0.15);
-    border: 1px solid rgba(232,80,10,0.3);
-    color: var(--accent);
-    padding: 6px 14px;
-    border-radius: 100px;
-    font-size: 12px;
-    font-weight: 600;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    margin-bottom: 28px;
-  }
-  .hero-badge::before {
-    content: '';
-    width: 6px; height: 6px;
-    background: var(--accent);
-    border-radius: 50%;
-    animation: pulse 2s infinite;
-  }
-  @keyframes pulse {
-    0%, 100% { opacity: 1; transform: scale(1); }
-    50% { opacity: 0.4; transform: scale(1.4); }
-  }
-
-  .hero h1 {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(64px, 8vw, 110px);
-    line-height: 0.92;
-    letter-spacing: 0.02em;
-    margin-bottom: 28px;
-  }
-
-  .hero h1 em {
-    font-style: normal;
-    color: var(--accent);
-    display: block;
-  }
-
-  .hero p {
-    font-size: 17px;
-    line-height: 1.7;
-    color: #aaa;
-    max-width: 480px;
-    margin-bottom: 40px;
-  }
-
-  .hero-buttons {
-    display: flex;
-    gap: 16px;
-    flex-wrap: wrap;
-  }
-
-  .btn-primary {
-    background: var(--accent);
-    color: #fff;
-    padding: 16px 32px;
-    border-radius: 4px;
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 15px;
-    letter-spacing: 0.02em;
-    transition: all 0.2s;
-    display: inline-block;
-  }
-  .btn-primary:hover { background: #c73f00; transform: translateY(-1px); }
-
-  .btn-outline {
-    border: 1px solid #333;
-    color: var(--white);
-    padding: 16px 32px;
-    border-radius: 4px;
-    text-decoration: none;
-    font-weight: 500;
-    font-size: 15px;
-    transition: all 0.2s;
-    display: inline-block;
-  }
-  .btn-outline:hover { border-color: var(--white); }
-
-  /* ---- HERO VISUAL ---- */
-  .hero-visual {
-    position: relative;
-  }
-
-  .hero-card-main {
-    background: var(--card);
-    border: 1px solid #2a2a2a;
-    border-radius: 16px;
-    padding: 40px;
-    position: relative;
-    overflow: hidden;
-  }
-  .hero-card-main::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, var(--accent), var(--accent2));
-  }
-
-  .card-icon {
-    width: 56px; height: 56px;
-    background: rgba(232,80,10,0.15);
-    border-radius: 12px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 26px;
-    margin-bottom: 20px;
-  }
-
-  .card-label {
-    font-size: 12px;
-    font-weight: 600;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-bottom: 10px;
-  }
-
-  .card-name {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 42px;
-    letter-spacing: 0.03em;
-    margin-bottom: 6px;
-  }
-
-  .card-sub {
-    color: var(--accent);
-    font-size: 14px;
-    font-weight: 500;
-    margin-bottom: 24px;
-  }
-
-  .card-stats {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
-    margin-bottom: 28px;
-  }
-
-  .stat {
-    background: #1e1e1e;
-    border-radius: 8px;
-    padding: 14px;
-  }
-  .stat-num {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 32px;
-    color: var(--white);
-    line-height: 1;
-    margin-bottom: 4px;
-  }
-  .stat-label { font-size: 12px; color: var(--muted); }
-
-  .card-phone {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    background: var(--accent);
-    border-radius: 8px;
-    padding: 14px 18px;
-    font-weight: 600;
-    font-size: 16px;
-  }
-
-  .floating-badge {
-    position: absolute;
-    top: -16px;
-    right: 24px;
-    background: var(--accent2);
-    color: #1a0f00;
-    padding: 8px 16px;
-    border-radius: 100px;
-    font-size: 13px;
-    font-weight: 700;
-    box-shadow: 0 4px 20px rgba(247,201,72,0.3);
-  }
-
-  .review-float {
-    position: absolute;
-    bottom: -20px;
-    left: -20px;
-    background: var(--mid);
-    border: 1px solid #2a2a2a;
-    border-radius: 12px;
-    padding: 16px 20px;
-    min-width: 200px;
-  }
-
-  .stars { color: var(--accent2); font-size: 14px; margin-bottom: 6px; }
-  .review-text { font-size: 13px; color: #ccc; margin-bottom: 6px; line-height: 1.4; }
-  .review-author { font-size: 12px; color: var(--muted); }
-
-  /* ---- TRUST BAR ---- */
-  .trust-bar {
-    padding: 28px 60px;
-    border-top: 1px solid #1e1e1e;
-    border-bottom: 1px solid #1e1e1e;
-    display: flex;
-    gap: 48px;
-    align-items: center;
-    overflow-x: auto;
-  }
-
-  .trust-item {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    white-space: nowrap;
-    flex-shrink: 0;
-  }
-
-  .trust-icon {
-    width: 36px; height: 36px;
-    background: rgba(232,80,10,0.12);
-    border-radius: 8px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 18px;
-  }
-
-  .trust-label { font-size: 13px; font-weight: 600; color: #ccc; }
-  .trust-sub { font-size: 11px; color: var(--muted); }
-
-  /* ---- SERVICES ---- */
-  .section {
-    padding: 100px 60px;
-  }
-
-  .section-eyebrow {
-    font-size: 12px;
-    font-weight: 600;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 16px;
-  }
-
-  .section-title {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(42px, 5vw, 68px);
-    letter-spacing: 0.02em;
-    line-height: 1;
-    margin-bottom: 16px;
-  }
-
-  .section-sub {
-    font-size: 16px;
-    color: #888;
-    max-width: 500px;
-    line-height: 1.7;
-    margin-bottom: 60px;
-  }
-
-  .services-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2px;
-    background: #1e1e1e;
-    border-radius: 16px;
-    overflow: hidden;
-  }
-
-  .service-item {
-    background: var(--black);
-    padding: 36px 32px;
-    transition: background 0.2s;
-    cursor: default;
-  }
-  .service-item:hover { background: #111; }
-
-  .service-num {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 48px;
-    color: #2a2a2a;
-    line-height: 1;
-    margin-bottom: 16px;
-  }
-
-  .service-icon { font-size: 28px; margin-bottom: 14px; display: block; }
-
-  .service-title {
-    font-size: 18px;
-    font-weight: 600;
-    margin-bottom: 10px;
-    color: var(--white);
-  }
-
-  .service-desc {
-    font-size: 14px;
-    color: #666;
-    line-height: 1.6;
-  }
-
-  /* ---- WHY ---- */
-  .why-section {
-    padding: 100px 60px;
-    background: var(--mid);
-  }
-
-  .why-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 80px;
-    align-items: center;
-  }
-
-  .big-number {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 180px;
-    line-height: 0.85;
-    color: #1e1e1e;
-    position: absolute;
-    top: -20px;
-    left: -10px;
-    z-index: 0;
-    pointer-events: none;
-    user-select: none;
-  }
-
-  .why-left { position: relative; }
-
-  .why-points { position: relative; z-index: 1; }
-
-  .why-point {
-    display: flex;
-    gap: 20px;
-    align-items: flex-start;
-    margin-bottom: 36px;
-    padding-bottom: 36px;
-    border-bottom: 1px solid #2a2a2a;
-  }
-  .why-point:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
-
-  .why-dot {
-    width: 40px; height: 40px;
-    background: var(--accent);
-    border-radius: 8px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 18px;
-    flex-shrink: 0;
-    margin-top: 2px;
-  }
-
-  .why-point-title { font-size: 17px; font-weight: 600; margin-bottom: 6px; }
-  .why-point-desc { font-size: 14px; color: #777; line-height: 1.6; }
-
-  .why-right { }
-
-  .testimonial-card {
-    background: var(--black);
-    border: 1px solid #2a2a2a;
-    border-radius: 16px;
-    padding: 36px;
-    margin-bottom: 20px;
-  }
-
-  .quote-mark {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 80px;
-    color: var(--accent);
-    line-height: 0.7;
-    margin-bottom: 16px;
-    display: block;
-  }
-
-  .quote-text {
-    font-size: 18px;
-    line-height: 1.6;
-    color: #ccc;
-    margin-bottom: 24px;
-  }
-
-  .quote-author {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-  }
-
-  .author-avatar {
-    width: 44px; height: 44px;
-    background: #2a2a2a;
-    border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    font-weight: 700;
-    font-size: 15px;
-    color: var(--accent);
-  }
-
-  .author-name { font-weight: 600; font-size: 15px; }
-  .author-loc { font-size: 13px; color: var(--muted); }
-
-  .rating-row {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    background: var(--black);
-    border: 1px solid #2a2a2a;
-    border-radius: 12px;
-    padding: 20px 24px;
-  }
-
-  .rating-big {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 52px;
-    color: var(--white);
-    line-height: 1;
-  }
-
-  .rating-stars { color: var(--accent2); font-size: 20px; margin-bottom: 4px; }
-  .rating-sub { font-size: 13px; color: var(--muted); }
-
-  /* ---- PROCESS ---- */
-  .process-section { padding: 100px 60px; }
-
-  .process-steps {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 0;
-    position: relative;
-    margin-top: 60px;
-  }
-
-  .process-steps::before {
-    content: '';
-    position: absolute;
-    top: 28px;
-    left: 10%;
-    right: 10%;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, #333, #333, #333, transparent);
-    z-index: 0;
-  }
-
-  .process-step {
-    text-align: center;
-    padding: 0 20px;
-    position: relative;
-    z-index: 1;
-  }
-
-  .step-circle {
-    width: 56px; height: 56px;
-    border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    margin: 0 auto 24px;
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 22px;
-    border: 2px solid #333;
-    background: var(--black);
-    transition: all 0.3s;
-  }
-
-  .step-circle.active {
-    background: var(--accent);
-    border-color: var(--accent);
-    color: #fff;
-    box-shadow: 0 0 30px rgba(232,80,10,0.4);
-  }
-
-  .step-title { font-size: 16px; font-weight: 600; margin-bottom: 8px; }
-  .step-desc { font-size: 13px; color: #666; line-height: 1.5; }
-
-  /* ---- CTA ---- */
-  .cta-section {
-    padding: 120px 60px;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .cta-section::before {
-    content: '';
-    position: absolute;
-    top: 50%; left: 50%;
-    transform: translate(-50%, -50%);
-    width: 800px; height: 400px;
-    background: radial-gradient(ellipse, rgba(232,80,10,0.08) 0%, transparent 70%);
-    pointer-events: none;
-  }
-
-  .cta-section h2 {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(52px, 7vw, 96px);
-    letter-spacing: 0.02em;
-    line-height: 1;
-    margin-bottom: 24px;
-    position: relative;
-  }
-
-  .cta-section h2 span { color: var(--accent); }
-
-  .cta-section p {
-    font-size: 18px;
-    color: #888;
-    margin-bottom: 48px;
-    position: relative;
-  }
-
-  .cta-buttons {
-    display: flex;
-    gap: 16px;
-    justify-content: center;
-    flex-wrap: wrap;
-    position: relative;
-  }
-
-  .btn-large {
-    padding: 20px 44px;
-    font-size: 17px;
-    font-weight: 600;
-    letter-spacing: 0.02em;
-    border-radius: 4px;
-    text-decoration: none;
-    transition: all 0.2s;
-    display: inline-block;
-  }
-
-  /* ---- FOOTER ---- */
-  footer {
-    padding: 48px 60px;
-    border-top: 1px solid #1e1e1e;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 20px;
-  }
-
-  footer p { font-size: 13px; color: #555; }
-  footer p a { color: var(--accent); text-decoration: none; }
-
-  /* ---- MADE BY ---- */
-  .made-by {
-    background: rgba(232,80,10,0.08);
-    border-top: 1px solid rgba(232,80,10,0.2);
-    padding: 20px 60px;
-    text-align: center;
-    font-size: 13px;
-    color: #666;
-  }
-  .made-by strong { color: var(--accent); }
-
-  /* ---- ANIMATIONS ---- */
-  .fade-up {
-    opacity: 0;
-    transform: translateY(30px);
-    animation: fadeUp 0.6s ease forwards;
-  }
-
-  @keyframes fadeUp {
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  .delay-1 { animation-delay: 0.1s; }
-  .delay-2 { animation-delay: 0.2s; }
-  .delay-3 { animation-delay: 0.3s; }
-  .delay-4 { animation-delay: 0.4s; }
-  .delay-5 { animation-delay: 0.5s; }
-
-  @media (max-width: 900px) {
-    nav { padding: 20px 24px; }
-    .nav-links { display: none; }
-    .hero { grid-template-columns: 1fr; padding: 60px 24px; }
-    .hero-visual { display: none; }
-    .section, .process-section, .cta-section { padding: 60px 24px; }
-    .trust-bar { padding: 20px 24px; }
-    .why-section { padding: 60px 24px; }
-    .why-grid { grid-template-columns: 1fr; gap: 40px; }
-    .services-grid { grid-template-columns: 1fr; }
-    .process-steps { grid-template-columns: 1fr 1fr; }
-    .process-steps::before { display: none; }
-    footer { padding: 32px 24px; flex-direction: column; text-align: center; }
-    .made-by { padding: 20px 24px; }
-  }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --navy: #0f2137;
+  --orange: #e8500a;
+  --orange-light: #fff3ee;
+  --text: #1a1a2e;
+  --muted: #6b7280;
+  --border: #e5e7eb;
+  --bg: #ffffff;
+  --bg2: #f9fafb;
+}
+body { font-family: 'Inter', sans-serif; color: var(--text); background: var(--bg); line-height: 1.6; }
+.demo-banner { background: var(--navy); color: #fff; text-align: center; padding: 10px 20px; font-size: 12px; letter-spacing: 0.04em; position: sticky; top: 0; z-index: 200; }
+.demo-banner a { color: var(--orange); text-decoration: none; font-weight: 600; }
+nav { background: #fff; border-bottom: 1px solid var(--border); padding: 0 60px; display: flex; justify-content: space-between; align-items: center; height: 68px; position: sticky; top: 37px; z-index: 100; }
+.logo { font-family: 'Fraunces', serif; font-size: 22px; font-weight: 900; color: var(--navy); text-decoration: none; }
+.logo span { color: var(--orange); }
+.nav-links { display: flex; gap: 32px; list-style: none; }
+.nav-links a { font-size: 14px; font-weight: 500; color: var(--muted); text-decoration: none; transition: color 0.15s; }
+.nav-links a:hover { color: var(--text); }
+.nav-phone { display: flex; align-items: center; gap: 20px; }
+.nav-number { font-weight: 700; font-size: 15px; color: var(--navy); }
+.btn { display: inline-block; padding: 10px 22px; border-radius: 4px; font-size: 14px; font-weight: 600; text-decoration: none; transition: all 0.15s; cursor: pointer; }
+.btn-orange { background: var(--orange); color: #fff; }
+.btn-orange:hover { background: #c73f00; }
+.btn-outline-dark { border: 2px solid var(--navy); color: var(--navy); }
+.btn-outline-dark:hover { background: var(--navy); color: #fff; }
+.hero { background: var(--navy); color: #fff; padding: 80px 60px; display: grid; grid-template-columns: 1fr 380px; gap: 60px; align-items: center; }
+.hero-tag { display: inline-block; background: rgba(232,80,10,0.2); color: #ffb38a; font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; padding: 5px 12px; border-radius: 3px; margin-bottom: 20px; }
+.hero h1 { font-family: 'Fraunces', serif; font-size: clamp(36px, 4.5vw, 58px); font-weight: 900; line-height: 1.1; margin-bottom: 20px; color: #fff; }
+.hero h1 span { color: var(--orange); }
+.hero-desc { font-size: 17px; color: #9ca3af; max-width: 520px; margin-bottom: 36px; line-height: 1.7; }
+.hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 48px; }
+.hero-trust { display: flex; gap: 32px; padding-top: 36px; border-top: 1px solid rgba(255,255,255,0.1); }
+.trust-num { font-family: 'Fraunces', serif; font-size: 28px; font-weight: 900; color: #fff; }
+.trust-num span { color: var(--orange); }
+.trust-label { font-size: 13px; color: #9ca3af; }
+.hero-card { background: #fff; border-radius: 8px; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.3); }
+.hero-card-header { background: var(--orange); padding: 20px 24px; color: #fff; }
+.hero-card-header h3 { font-family: 'Fraunces', serif; font-size: 20px; font-weight: 900; margin-bottom: 4px; }
+.hero-card-header p { font-size: 13px; opacity: 0.85; }
+.hero-card-body { padding: 24px; }
+.contact-row { display: flex; align-items: center; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--border); }
+.contact-row:last-child { border-bottom: none; }
+.contact-icon { width: 36px; height: 36px; background: var(--orange-light); border-radius: 6px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-weight: 700; font-size: 11px; color: var(--orange); letter-spacing: 0.04em; }
+.contact-label { font-size: 11px; color: var(--muted); margin-bottom: 2px; }
+.contact-val { font-size: 14px; font-weight: 600; color: var(--text); }
+.rating-row { background: var(--bg2); border-radius: 6px; padding: 12px 14px; margin-top: 16px; display: flex; align-items: center; gap: 12px; }
+.rating-stars { color: #f59e0b; font-size: 14px; }
+.rating-text { font-size: 13px; color: var(--muted); }
+.rating-text strong { color: var(--text); }
+.services-strip { background: var(--orange); padding: 18px 60px; display: flex; gap: 0; overflow-x: auto; }
+.strip-item { color: #fff; font-size: 13px; font-weight: 600; padding: 0 28px 0 0; white-space: nowrap; display: flex; align-items: center; gap: 8px; }
+.strip-item::before { content: ''; width: 6px; height: 6px; background: rgba(255,255,255,0.5); border-radius: 50%; flex-shrink: 0; }
+.strip-item:first-child::before { display: none; }
+.section { padding: 80px 60px; }
+.section-alt { background: var(--bg2); }
+.section-label { font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--orange); margin-bottom: 12px; }
+.section h2 { font-family: 'Fraunces', serif; font-size: clamp(28px, 3.5vw, 44px); font-weight: 900; line-height: 1.15; color: var(--navy); margin-bottom: 16px; }
+.section-intro { font-size: 16px; color: var(--muted); max-width: 580px; line-height: 1.75; margin-bottom: 52px; }
+.services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.service-card { border: 1px solid var(--border); border-radius: 8px; padding: 32px 28px; background: #fff; transition: border-color 0.2s, box-shadow 0.2s; }
+.service-card:hover { border-color: var(--orange); box-shadow: 0 4px 20px rgba(232,80,10,0.08); }
+.service-num { font-family: 'Fraunces', serif; font-size: 13px; font-weight: 700; color: var(--orange); margin-bottom: 14px; letter-spacing: 0.06em; }
+.service-card h3 { font-size: 17px; font-weight: 700; color: var(--navy); margin-bottom: 10px; }
+.service-card p { font-size: 14px; color: var(--muted); line-height: 1.65; }
+.why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+.why-point { padding: 24px 0; border-bottom: 1px solid var(--border); display: flex; gap: 20px; }
+.why-point:first-child { padding-top: 0; }
+.why-point:last-child { border-bottom: none; }
+.why-check { width: 28px; height: 28px; background: var(--orange); border-radius: 4px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; color: #fff; font-weight: 700; font-size: 13px; }
+.why-point h4 { font-size: 16px; font-weight: 700; color: var(--navy); margin-bottom: 6px; }
+.why-point p { font-size: 14px; color: var(--muted); line-height: 1.6; }
+.testimonial { background: #fff; border: 1px solid var(--border); border-radius: 8px; padding: 32px; margin-bottom: 16px; }
+.test-stars { color: #f59e0b; font-size: 14px; margin-bottom: 14px; }
+.test-text { font-size: 16px; color: var(--text); line-height: 1.7; margin-bottom: 20px; font-style: italic; }
+.test-author { display: flex; align-items: center; gap: 12px; }
+.test-avatar { width: 40px; height: 40px; background: var(--orange-light); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px; color: var(--orange); }
+.test-name { font-size: 14px; font-weight: 700; color: var(--navy); }
+.test-loc { font-size: 12px; color: var(--muted); }
+.rating-summary { background: var(--navy); color: #fff; border-radius: 8px; padding: 24px 28px; display: flex; align-items: center; gap: 20px; }
+.rating-big { font-family: 'Fraunces', serif; font-size: 52px; font-weight: 900; line-height: 1; color: #fff; }
+.rating-big span { color: var(--orange); }
+.rating-summary-stars { color: #f59e0b; font-size: 18px; margin-bottom: 4px; }
+.rating-summary p { font-size: 13px; color: #9ca3af; }
+.process-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; margin-top: 52px; }
+.process-step { padding: 0 32px 0 0; position: relative; }
+.process-step:last-child { padding-right: 0; }
+.process-step::after { content: ''; position: absolute; top: 20px; right: 16px; width: calc(100% - 60px); height: 1px; background: var(--border); }
+.process-step:last-child::after { display: none; }
+.step-bubble { width: 40px; height: 40px; border-radius: 50%; border: 2px solid var(--border); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 14px; color: var(--muted); margin-bottom: 20px; background: #fff; position: relative; z-index: 1; }
+.step-bubble.active { background: var(--orange); border-color: var(--orange); color: #fff; }
+.process-step h4 { font-size: 15px; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
+.process-step p { font-size: 13px; color: var(--muted); line-height: 1.6; }
+.contact-section { background: var(--navy); padding: 80px 60px; color: #fff; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+.contact-section .section-label { color: #ffb38a; }
+.contact-section h2 { font-family: 'Fraunces', serif; font-size: clamp(28px, 3vw, 40px); font-weight: 900; color: #fff; margin-bottom: 16px; }
+.contact-section p { font-size: 16px; color: #9ca3af; line-height: 1.7; margin-bottom: 32px; }
+.contact-detail-row { display: flex; gap: 16px; align-items: flex-start; margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,0.08); }
+.contact-detail-row:last-child { border-bottom: none; margin-bottom: 0; }
+.detail-icon { width: 40px; height: 40px; background: rgba(232,80,10,0.15); border-radius: 6px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 11px; font-weight: 700; color: var(--orange); letter-spacing: 0.04em; }
+.detail-label { font-size: 12px; color: #6b7280; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.06em; }
+.detail-val { font-size: 15px; font-weight: 600; color: #fff; }
+.contact-form-card { background: #fff; border-radius: 8px; padding: 36px; }
+.contact-form-card h3 { font-family: 'Fraunces', serif; font-size: 22px; font-weight: 900; color: var(--navy); margin-bottom: 24px; }
+.form-group { margin-bottom: 16px; }
+.form-group label { display: block; font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 6px; }
+.form-group input, .form-group textarea, .form-group select { width: 100%; padding: 10px 14px; border: 1px solid var(--border); border-radius: 4px; font-size: 14px; font-family: 'Inter', sans-serif; color: var(--text); background: #fff; transition: border-color 0.15s; }
+.form-group input:focus, .form-group textarea:focus, .form-group select:focus { outline: none; border-color: var(--orange); }
+.form-group textarea { resize: vertical; min-height: 90px; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.form-submit { width: 100%; padding: 13px; background: var(--orange); color: #fff; border: none; border-radius: 4px; font-size: 15px; font-weight: 700; cursor: pointer; font-family: 'Inter', sans-serif; margin-top: 8px; transition: background 0.15s; }
+.form-submit:hover { background: #c73f00; }
+footer { background: #0a1628; color: #fff; padding: 48px 60px 32px; }
+.footer-top { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 60px; padding-bottom: 36px; border-bottom: 1px solid rgba(255,255,255,0.08); margin-bottom: 28px; }
+.footer-logo { font-family: 'Fraunces', serif; font-size: 22px; font-weight: 900; color: #fff; margin-bottom: 12px; }
+.footer-logo span { color: var(--orange); }
+.footer-desc { font-size: 14px; color: #6b7280; line-height: 1.7; }
+.footer-col h4 { font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #9ca3af; margin-bottom: 16px; }
+.footer-col ul { list-style: none; }
+.footer-col li { margin-bottom: 10px; }
+.footer-col a { font-size: 14px; color: #6b7280; text-decoration: none; transition: color 0.15s; }
+.footer-col a:hover { color: #fff; }
+.footer-bottom { display: flex; justify-content: space-between; align-items: center; font-size: 13px; color: #4b5563; }
+.footer-bottom a { color: var(--orange); text-decoration: none; }
+.made-by { background: var(--orange); color: #fff; text-align: center; padding: 14px 20px; font-size: 13px; }
+.made-by a { color: #fff; font-weight: 700; text-decoration: underline; }
+@media (max-width: 900px) {
+  nav { padding: 0 20px; }
+  .nav-links { display: none; }
+  .hero { grid-template-columns: 1fr; padding: 48px 20px; }
+  .hero-card { display: none; }
+  .section { padding: 52px 20px; }
+  .services-strip { padding: 16px 20px; }
+  .services-grid { grid-template-columns: 1fr; }
+  .why-grid { grid-template-columns: 1fr; gap: 40px; }
+  .process-steps { grid-template-columns: 1fr 1fr; }
+  .process-step::after { display: none; }
+  .contact-section { grid-template-columns: 1fr; padding: 52px 20px; gap: 40px; }
+  footer { padding: 40px 20px 24px; }
+  .footer-top { grid-template-columns: 1fr; gap: 32px; }
+  .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
+  .hero-trust { gap: 20px; flex-wrap: wrap; }
+  .form-row { grid-template-columns: 1fr; }
+  .test-grid { grid-template-columns: 1fr !important; }
+}
 </style>
 </head>
 <body>
 
 <div class="demo-banner">
-  ✦ Demo Site &nbsp;—&nbsp; <span>This is what your business could look like. Site built by Liam · Contact: <strong>liamspencer549@gmail.com</strong></span>
+  This is a demo site — want one like this for your business? Contact <a href="mailto:liamspencer549@gmail.com">Liam Spencer</a> &nbsp;·&nbsp; Starting from $300
 </div>
 
 <nav>
-  <a href="https://website-building-green.vercel.app" style="text-decoration:none;"><div class="nav-logo">Your<span>Trade</span>Co</div></a>
+  <a href="https://website-building-green.vercel.app" class="logo">Your<span>Business</span></a>
   <ul class="nav-links">
     <li><a href="#services">Services</a></li>
     <li><a href="#about">About</a></li>
-    <li><a href="#process">How It Works</a></li>
-    <li><a href="#contact" class="nav-cta">Get a Quote</a></li>
+    <li><a href="#contact">Contact</a></li>
   </ul>
+  <div class="nav-phone">
+    <span class="nav-number">04XX XXX XXX</span>
+    <a href="#contact" class="btn btn-orange">Get a Free Quote</a>
+  </div>
 </nav>
 
-<!-- HERO -->
 <section class="hero">
   <div>
-    <div class="hero-badge fade-up">Available 24/7 Across Brisbane</div>
-    <h1 class="fade-up delay-1">
-      Fast.<br>
-      Reliable.<br>
-      <em>Fixed Right.</em>
-    </h1>
-    <p class="fade-up delay-2">Brisbane's most trusted local tradie. We show up on time, price upfront, and leave your home cleaner than we found it.</p>
-    <div class="hero-buttons fade-up delay-3">
-      <a href="#contact" class="btn-primary">Get a Free Quote</a>
-      <a href="tel:0400000000" class="btn-outline">Call Now</a>
+    <div class="hero-tag">Licensed &amp; Insured &nbsp;·&nbsp; Brisbane &amp; Surrounds</div>
+    <h1>Your Trade.<br>Done <span>Properly.</span></h1>
+    <p class="hero-desc">Brisbane's reliable local tradie. We show up when we say, price everything upfront, and stand behind every job with a 12-month workmanship guarantee.</p>
+    <div class="hero-ctas">
+      <a href="#contact" class="btn btn-orange">Get a Free Quote</a>
+      <a href="#services" class="btn" style="border: 2px solid rgba(255,255,255,0.3); color:#fff;">Our Services</a>
+    </div>
+    <div class="hero-trust">
+      <div><div class="trust-num">12<span>+</span></div><div class="trust-label">Years experience</div></div>
+      <div><div class="trust-num">800<span>+</span></div><div class="trust-label">Jobs completed</div></div>
+      <div><div class="trust-num">24<span>/7</span></div><div class="trust-label">Emergency service</div></div>
     </div>
   </div>
-
-  <div class="hero-visual fade-up delay-4">
-    <div class="floating-badge">5.0 Rated</div>
-    <div class="hero-card-main">
-      <div class="card-icon" style="font-size:18px;font-weight:700;letter-spacing:0.05em;color:var(--accent);">LIC</div>
-      <div class="card-label">Licensed Tradie</div>
-      <div class="card-name">YOUR BUSINESS</div>
-      <div class="card-sub">Serving Brisbane & Surrounds</div>
-      <div class="card-stats">
-        <div class="stat">
-          <div class="stat-num">12+</div>
-          <div class="stat-label">Years Experience</div>
-        </div>
-        <div class="stat">
-          <div class="stat-num">850+</div>
-          <div class="stat-label">Jobs Completed</div>
-        </div>
-        <div class="stat">
-          <div class="stat-num">24/7</div>
-          <div class="stat-label">Emergency Service</div>
-        </div>
-        <div class="stat">
-          <div class="stat-num">100%</div>
-          <div class="stat-label">Satisfaction Rate</div>
-        </div>
-      </div>
-      <div class="card-phone">
-        04XX XXX XXX
-      </div>
+  <div class="hero-card">
+    <div class="hero-card-header">
+      <h3>Your Business Name</h3>
+      <p>Licensed Trade Contractor &nbsp;·&nbsp; Lic. No. XXXXXXX</p>
     </div>
-    <div class="review-float">
-      <div class="stars">★★★★★</div>
-      <div class="review-text">"Sorted our job same day, turned up on time and left everything clean. Absolute legend."</div>
-      <div class="review-author">— Sarah M., Paddington</div>
+    <div class="hero-card-body">
+      <div class="contact-row"><div class="contact-icon">TEL</div><div><div class="contact-label">Phone</div><div class="contact-val">04XX XXX XXX</div></div></div>
+      <div class="contact-row"><div class="contact-icon">EMAIL</div><div><div class="contact-label">Email</div><div class="contact-val">info@yourbusiness.com.au</div></div></div>
+      <div class="contact-row"><div class="contact-icon">AREA</div><div><div class="contact-label">Service Area</div><div class="contact-val">Brisbane &amp; Surrounds</div></div></div>
+      <div class="contact-row"><div class="contact-icon">HRS</div><div><div class="contact-label">Hours</div><div class="contact-val">Mon–Sat 7am–5pm &nbsp;·&nbsp; 24/7 emergencies</div></div></div>
+      <div class="rating-row"><div class="rating-stars">★★★★★</div><div class="rating-text"><strong>4.9</strong> &nbsp;·&nbsp; 120+ Google reviews</div></div>
     </div>
   </div>
 </section>
 
-<!-- TRUST BAR -->
-<div class="trust-bar">
-  <div class="trust-item">
-    <div class="trust-icon" style="font-size:14px;font-weight:700;color:var(--accent);">QLD</div>
-    <div>
-      <div class="trust-label">Fully Licensed</div>
-      <div class="trust-sub">Trade lic. XXXXXXX</div>
-    </div>
-  </div>
-  <div class="trust-item">
-    <div class="trust-icon" style="font-size:15px;font-weight:700;color:var(--accent);">24H</div>
-    <div>
-      <div class="trust-label">Same Day Service</div>
-      <div class="trust-sub">Usually within 2 hours</div>
-    </div>
-  </div>
-  <div class="trust-item">
-    <div class="trust-icon" style="font-size:15px;font-weight:700;color:var(--accent);">$</div>
-    <div>
-      <div class="trust-label">Upfront Pricing</div>
-      <div class="trust-sub">No hidden fees, ever</div>
-    </div>
-  </div>
-  <div class="trust-item">
-    <div class="trust-icon" style="font-size:13px;font-weight:700;color:var(--accent);">INS</div>
-    <div>
-      <div class="trust-label">Fully Insured</div>
-      <div class="trust-sub">$10M public liability</div>
-    </div>
-  </div>
-  <div class="trust-item">
-    <div class="trust-icon" style="font-size:14px;font-weight:700;color:var(--accent);">GTD</div>
-    <div>
-      <div class="trust-label">Workmanship Guarantee</div>
-      <div class="trust-sub">12 months on all jobs</div>
-    </div>
-  </div>
+<div class="services-strip">
+  <div class="strip-item">Repairs &amp; Maintenance</div>
+  <div class="strip-item">Installations</div>
+  <div class="strip-item">Emergency Call-Outs</div>
+  <div class="strip-item">Commercial Work</div>
+  <div class="strip-item">Renovations</div>
+  <div class="strip-item">Inspections &amp; Reports</div>
 </div>
 
-<!-- SERVICES -->
 <section class="section" id="services">
-  <div class="section-eyebrow">What We Do</div>
-  <h2 class="section-title">Every Job.<br>Done Properly.</h2>
-  <p class="section-sub">From small repairs to full renovations — we handle it all with the same care and professionalism.</p>
-
+  <div class="section-label">What We Do</div>
+  <h2>A Full Range of Trade Services</h2>
+  <p class="section-intro">From small repairs to large-scale installations, we cover everything with the same standard of work and the same upfront approach to pricing.</p>
   <div class="services-grid">
-    <div class="service-item">
-      <div class="service-num">01</div>
-      <span class="service-icon" style="font-size:13px;font-weight:700;color:var(--accent);letter-spacing:0.06em;">REP</span>
-      <div class="service-title">Repairs & Maintenance</div>
-      <div class="service-desc">Fast, reliable repairs using the right tools for the job. No issue too big, no call-out too small.</div>
-    </div>
-    <div class="service-item">
-      <div class="service-num">02</div>
-      <span class="service-icon" style="font-size:13px;font-weight:700;color:var(--accent);letter-spacing:0.06em;">INST</span>
-      <div class="service-title">Installations</div>
-      <div class="service-desc">Supply and install all major brands and products. Done right the first time, every time.</div>
-    </div>
-    <div class="service-item">
-      <div class="service-num">03</div>
-      <span class="service-icon" style="font-size:13px;font-weight:700;color:var(--accent);letter-spacing:0.06em;">SOS</span>
-      <div class="service-title">Emergency Call-Outs</div>
-      <div class="service-desc">When things go wrong fast, we move fast. Available 24/7 and usually on site within 60 minutes.</div>
-    </div>
-    <div class="service-item">
-      <div class="service-num">04</div>
-      <span class="service-icon" style="font-size:13px;font-weight:700;color:var(--accent);letter-spacing:0.06em;">COM</span>
-      <div class="service-title">Commercial Work</div>
-      <div class="service-desc">We work with businesses, landlords and property managers. Reliable service, competitive rates.</div>
-    </div>
-    <div class="service-item">
-      <div class="service-num">05</div>
-      <span class="service-icon" style="font-size:13px;font-weight:700;color:var(--accent);letter-spacing:0.06em;">RENO</span>
-      <div class="service-title">Renovations</div>
-      <div class="service-desc">Full renos from planning to final finish. We work alongside your builder or manage the whole job.</div>
-    </div>
-    <div class="service-item">
-      <div class="service-num">06</div>
-      <span class="service-icon" style="font-size:13px;font-weight:700;color:var(--accent);letter-spacing:0.06em;">INSP</span>
-      <div class="service-title">Inspections & Reports</div>
-      <div class="service-desc">Know exactly what you're getting into before you commit. Detailed reports, honest advice.</div>
-    </div>
+    <div class="service-card"><div class="service-num">01</div><h3>Repairs &amp; Maintenance</h3><p>Fast, reliable repairs using the right tools for the job. We carry a fully stocked vehicle so most jobs are completed on the first visit.</p></div>
+    <div class="service-card"><div class="service-num">02</div><h3>Installations</h3><p>Supply and install all major brands and products. Done right the first time with a 12-month workmanship guarantee on every job.</p></div>
+    <div class="service-card"><div class="service-num">03</div><h3>Emergency Call-Outs</h3><p>When things go wrong, we move fast. Available 24 hours a day, 7 days a week. Usually on site within 60 minutes across Brisbane.</p></div>
+    <div class="service-card"><div class="service-num">04</div><h3>Commercial Work</h3><p>We work with businesses, landlords and property managers on a regular basis. Reliable service, competitive rates and detailed invoicing.</p></div>
+    <div class="service-card"><div class="service-num">05</div><h3>Renovations</h3><p>Full renovations from planning to final finish. We work alongside your builder or can manage the full job independently.</p></div>
+    <div class="service-card"><div class="service-num">06</div><h3>Inspections &amp; Reports</h3><p>Know exactly what you're buying or working with. Detailed written reports with honest, practical recommendations.</p></div>
   </div>
 </section>
 
-<!-- WHY / TESTIMONIALS -->
-<section class="why-section" id="about">
+<section class="section section-alt" id="about">
   <div class="why-grid">
-    <div class="why-left">
-      <div class="big-number">WHY</div>
-      <div class="why-points">
-        <div class="section-eyebrow" style="margin-bottom: 20px;">Why Choose Us</div>
-        <div class="why-point">
-          <div class="why-dot" style="font-size:13px;font-weight:700;letter-spacing:0.04em;">ON</div>
-          <div>
-            <div class="why-point-title">We Actually Show Up</div>
-            <div class="why-point-desc">No ghosting, no 4-hour windows. You'll get a text when we're on the way and we'll be there when we say.</div>
-          </div>
-        </div>
-        <div class="why-point">
-          <div class="why-dot" style="font-size:13px;font-weight:700;letter-spacing:0.04em;">$</div>
-          <div>
-            <div class="why-point-title">Straight-Up Pricing</div>
-            <div class="why-point-desc">You'll know the price before we start. No invoices with surprises at the end.</div>
-          </div>
-        </div>
-        <div class="why-point">
-          <div class="why-dot" style="font-size:13px;font-weight:700;letter-spacing:0.04em;">OK</div>
-          <div>
-            <div class="why-point-title">Clean Work, Clean Site</div>
-            <div class="why-point-desc">We treat your home with respect. Drop sheets, shoe covers, full clean-up when we leave.</div>
-          </div>
-        </div>
-      </div>
+    <div>
+      <div class="section-label">Why Choose Us</div>
+      <h2>We Do Things Differently.</h2>
+      <p class="section-intro" style="margin-bottom:0;">A lot of tradies let you down. We built this business on doing the opposite — showing up, being straight with pricing, and leaving your place clean.</p>
     </div>
-
-    <div class="why-right">
-      <div class="testimonial-card">
-        <span class="quote-mark">"</span>
-        <div class="quote-text">Called in the morning and he was there within the hour. Job was done properly, priced fairly, and he left everything cleaner than he found it. Absolute champion.</div>
-        <div class="quote-author">
-          <div class="author-avatar">DK</div>
-          <div>
-            <div class="author-name">David K.</div>
-            <div class="author-loc">Paddington, Brisbane</div>
-          </div>
-          <div style="margin-left: auto; color: #f7c948; font-size: 14px;">★★★★★</div>
-        </div>
-      </div>
-
-      <div class="rating-row">
-        <div>
-          <div class="rating-big">4.9</div>
-        </div>
-        <div>
-          <div class="rating-stars">★★★★★</div>
-          <div style="font-size: 14px; font-weight: 600; margin-bottom: 2px;">Google Rating</div>
-          <div class="rating-sub">Based on 120+ reviews</div>
-        </div>
-        <div style="margin-left: auto; font-size: 13px; color: var(--muted); text-align: right; line-height: 1.5;">
-          94% would<br>recommend
-        </div>
-      </div>
+    <div>
+      <div class="why-point"><div class="why-check">&#10003;</div><div><h4>We Actually Show Up</h4><p>No 4-hour windows or no-shows. You'll get a call when we're on the way and we'll arrive when we said we would.</p></div></div>
+      <div class="why-point"><div class="why-check">&#10003;</div><div><h4>Upfront Pricing Every Time</h4><p>You'll know the full price before we start. No surprises on the invoice, no add-ons you didn't ask for.</p></div></div>
+      <div class="why-point"><div class="why-check">&#10003;</div><div><h4>Clean Work, Clean Site</h4><p>We use drop sheets, clean up after ourselves, and leave your property in better shape than we found it.</p></div></div>
+      <div class="why-point"><div class="why-check">&#10003;</div><div><h4>12-Month Guarantee</h4><p>Every job is backed by a 12-month workmanship guarantee. If something's not right, we'll fix it.</p></div></div>
     </div>
   </div>
 </section>
 
-<!-- PROCESS -->
-<section class="process-section" id="process">
-  <div style="text-align: center;">
-    <div class="section-eyebrow">How It Works</div>
-    <h2 class="section-title">Simple As.</h2>
-    <p class="section-sub" style="margin: 0 auto 0;">Four steps from first call to job done.</p>
+<section class="section">
+  <div class="section-label">Customer Reviews</div>
+  <h2>What Our Customers Say</h2>
+  <p class="section-intro">We let our work speak for itself. Here's what Brisbane homeowners and businesses have to say.</p>
+  <div class="test-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start;">
+    <div>
+      <div class="testimonial"><div class="test-stars">★★★★★</div><p class="test-text">"Called in the morning and he was there within the hour. Job was done properly, priced fairly, and left everything cleaner than he found it."</p><div class="test-author"><div class="test-avatar">SM</div><div><div class="test-name">Sarah M.</div><div class="test-loc">Paddington, Brisbane</div></div></div></div>
+      <div class="testimonial"><div class="test-stars">★★★★★</div><p class="test-text">"Best tradie I've used in Brisbane. Straight-up pricing, no drama, great job. Will be using again and recommending to everyone."</p><div class="test-author"><div class="test-avatar">JT</div><div><div class="test-name">James T.</div><div class="test-loc">Newmarket, Brisbane</div></div></div></div>
+    </div>
+    <div>
+      <div class="testimonial" style="margin-bottom:16px;"><div class="test-stars">★★★★★</div><p class="test-text">"Used them for a commercial job at our cafe. Turned up exactly when they said, quoted fairly, did clean work and sorted everything out in one visit."</p><div class="test-author"><div class="test-avatar">AL</div><div><div class="test-name">Angela L.</div><div class="test-loc">West End, Brisbane</div></div></div></div>
+      <div class="rating-summary"><div class="rating-big">4.9<span>/5</span></div><div><div class="rating-summary-stars">★★★★★</div><p style="font-size:14px;font-weight:700;color:#fff;margin-bottom:4px;">Google Rating</p><p>Based on 120+ verified reviews</p></div></div>
+    </div>
   </div>
+</section>
 
+<section class="section section-alt">
+  <div class="section-label">How It Works</div>
+  <h2>Four Steps from First Call to Done.</h2>
   <div class="process-steps">
-    <div class="process-step">
-      <div class="step-circle active">1</div>
-      <div class="step-title">You Call or Text</div>
-      <div class="step-desc">Reach us anytime. We pick up or call back within 15 minutes.</div>
-    </div>
-    <div class="process-step">
-      <div class="step-circle">2</div>
-      <div class="step-title">We Give a Quote</div>
-      <div class="step-desc">Upfront fixed price over the phone or on-site. No guessing.</div>
-    </div>
-    <div class="process-step">
-      <div class="step-circle">3</div>
-      <div class="step-title">We Show Up</div>
-      <div class="step-desc">On time, fully equipped, ready to fix it first visit.</div>
-    </div>
-    <div class="process-step">
-      <div class="step-circle">4</div>
-      <div class="step-title">Job Done Right</div>
-      <div class="step-desc">Clean site, all certifications provided, 12-month workmanship guarantee.</div>
-    </div>
+    <div class="process-step"><div class="step-bubble active">1</div><h4>You Call or Text</h4><p>Reach us any time. We pick up or call back within 15 minutes during business hours.</p></div>
+    <div class="process-step"><div class="step-bubble">2</div><h4>We Give a Quote</h4><p>Fixed upfront price given over the phone or on-site before we start any work.</p></div>
+    <div class="process-step"><div class="step-bubble">3</div><h4>We Show Up</h4><p>On time, fully equipped, and ready to complete the job on the first visit.</p></div>
+    <div class="process-step"><div class="step-bubble">4</div><h4>Job Done Right</h4><p>Clean site, certifications where needed, and a 12-month workmanship guarantee.</p></div>
   </div>
 </section>
 
-<!-- CTA -->
-<section class="cta-section" id="contact">
-  <h2>Ready to Get<br><span>It Sorted?</span></h2>
-  <p>Call now for a free quote. We're ready when you are.</p>
-  <div class="cta-buttons">
-    <a href="tel:0400000000" class="btn-large btn-primary">Call 04XX XXX XXX</a>
-    <a href="mailto:liamspencer549@gmail.com" class="btn-large btn-outline">Send a Message</a>
+<section class="contact-section" id="contact">
+  <div>
+    <div class="section-label">Get in Touch</div>
+    <h2>Get a Free Quote Today</h2>
+    <p>Fill out the form or give us a call. We'll get back to you the same day and have a quote within 24 hours.</p>
+    <div>
+      <div class="contact-detail-row"><div class="detail-icon">TEL</div><div><div class="detail-label">Phone</div><div class="detail-val">04XX XXX XXX</div></div></div>
+      <div class="contact-detail-row"><div class="detail-icon">EMAIL</div><div><div class="detail-label">Email</div><div class="detail-val">info@yourbusiness.com.au</div></div></div>
+      <div class="contact-detail-row"><div class="detail-icon">AREA</div><div><div class="detail-label">Service Area</div><div class="detail-val">Brisbane, Ipswich &amp; Moreton Bay</div></div></div>
+    </div>
+  </div>
+  <div class="contact-form-card">
+    <h3>Request a Free Quote</h3>
+    <div class="form-row">
+      <div class="form-group"><label>First Name</label><input type="text" placeholder="John"></div>
+      <div class="form-group"><label>Last Name</label><input type="text" placeholder="Smith"></div>
+    </div>
+    <div class="form-group"><label>Phone Number</label><input type="tel" placeholder="04XX XXX XXX"></div>
+    <div class="form-group"><label>What do you need done?</label><select><option value="">Select a service</option><option>Repairs &amp; Maintenance</option><option>Installation</option><option>Emergency Call-Out</option><option>Commercial Work</option><option>Renovation</option><option>Inspection / Report</option></select></div>
+    <div class="form-group"><label>Brief description</label><textarea placeholder="Tell us a bit about the job..."></textarea></div>
+    <button class="form-submit">Send Quote Request</button>
   </div>
 </section>
 
 <footer>
-  <div>
-    <a href="https://website-building-green.vercel.app" style="text-decoration:none;"><div class="nav-logo" style="font-size: 22px; margin-bottom: 8px;">Your<span style="color: var(--accent)">Trade</span>Co</div></a>
-    <p>Brisbane & Surrounds &nbsp;·&nbsp; QBCC Lic. No. XXXXXXX &nbsp;·&nbsp; ABN XX XXX XXX XXX</p>
+  <div class="footer-top">
+    <div><div class="footer-logo">Your<span>Business</span></div><p class="footer-desc">Licensed and insured trade services across Brisbane and surrounds. We show up, price fairly, and do the job right.</p></div>
+    <div class="footer-col"><h4>Services</h4><ul><li><a href="#">Repairs &amp; Maintenance</a></li><li><a href="#">Installations</a></li><li><a href="#">Emergency Call-Outs</a></li><li><a href="#">Commercial Work</a></li><li><a href="#">Renovations</a></li></ul></div>
+    <div class="footer-col"><h4>Contact</h4><ul><li><a href="#">04XX XXX XXX</a></li><li><a href="#">info@yourbusiness.com.au</a></li><li><a href="#">Brisbane &amp; Surrounds</a></li><li><a href="#">Lic. No. XXXXXXX</a></li></ul></div>
   </div>
-  <p>© 2025 YourTradeCo &nbsp;·&nbsp; <a href="#">Privacy</a> &nbsp;·&nbsp; <a href="#">Terms</a></p>
+  <div class="footer-bottom">
+    <p>&copy; 2025 Your Business Name. All rights reserved.</p>
+    <p>Site by <a href="https://website-building-green.vercel.app">Liam Spencer</a></p>
+  </div>
 </footer>
 
 <div class="made-by">
-  ✦ &nbsp; This is a <strong>demo site</strong> — want a site like this for your business? Contact <strong>Liam</strong> at <strong>liamspencer549@gmail.com</strong> &nbsp;·&nbsp; Starting from $300
+  Want a website like this for your business? <a href="https://website-building-green.vercel.app">liamspencer549@gmail.com</a> &nbsp;·&nbsp; Starting from $300
 </div>
 
 </body>
