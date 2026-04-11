@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your Restaurant — Fine Dining Brisbane</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,700;0,900;1,700&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --dark: #1a1209;
+  --brown: #2d1f0e;
+  --gold: #c9973a;
+  --gold-light: #f5e6c8;
+  --cream: #faf7f2;
+  --text: #2d2416;
+  --muted: #7a6a52;
+  --border: #e8dcc8;
+  --white: #ffffff;
+}
+body { font-family: 'Inter', sans-serif; color: var(--text); background: var(--white); line-height: 1.6; }
+.demo-banner { background: var(--dark); color: #fff; text-align: center; padding: 10px 20px; font-size: 12px; letter-spacing: 0.04em; position: sticky; top: 0; z-index: 200; }
+.demo-banner a { color: var(--gold); text-decoration: none; font-weight: 600; }
+
+/* NAV */
+nav { background: var(--dark); padding: 0 60px; display: flex; justify-content: space-between; align-items: center; height: 72px; position: sticky; top: 37px; z-index: 100; }
+.logo { font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 900; color: #fff; text-decoration: none; letter-spacing: 0.02em; }
+.logo span { color: var(--gold); }
+.nav-links { display: flex; gap: 32px; list-style: none; }
+.nav-links a { font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.6); text-decoration: none; letter-spacing: 0.06em; text-transform: uppercase; transition: color 0.15s; }
+.nav-links a:hover { color: #fff; }
+.nav-right { display: flex; align-items: center; gap: 20px; }
+.nav-hours { font-size: 12px; color: rgba(255,255,255,0.4); }
+.btn-res { background: var(--gold); color: var(--dark); padding: 10px 22px; border-radius: 3px; font-size: 13px; font-weight: 700; text-decoration: none; letter-spacing: 0.04em; transition: all 0.15s; }
+.btn-res:hover { background: #b8872e; }
+
+/* HERO */
+.hero { background: var(--dark); min-height: 88vh; display: flex; align-items: center; padding: 80px 60px; position: relative; overflow: hidden; }
+.hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 70% 50%, rgba(201,151,58,0.08) 0%, transparent 60%); pointer-events: none; }
+.hero-content { max-width: 620px; position: relative; z-index: 1; }
+.hero-tag { display: inline-flex; align-items: center; gap: 10px; color: var(--gold); font-size: 12px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 28px; }
+.hero-tag::before { content: ''; width: 32px; height: 1px; background: var(--gold); }
+.hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(44px, 6vw, 80px); font-weight: 900; line-height: 1.05; color: #fff; margin-bottom: 24px; }
+.hero h1 em { font-style: italic; color: var(--gold); display: block; }
+.hero-desc { font-size: 17px; color: rgba(255,255,255,0.55); line-height: 1.75; margin-bottom: 40px; max-width: 500px; }
+.hero-ctas { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 60px; }
+.btn-gold { background: var(--gold); color: var(--dark); padding: 14px 32px; border-radius: 3px; font-size: 14px; font-weight: 700; text-decoration: none; letter-spacing: 0.04em; transition: all 0.15s; display: inline-block; }
+.btn-gold:hover { background: #b8872e; }
+.btn-ghost-white { border: 1px solid rgba(255,255,255,0.25); color: #fff; padding: 14px 32px; border-radius: 3px; font-size: 14px; font-weight: 500; text-decoration: none; transition: all 0.15s; display: inline-block; }
+.btn-ghost-white:hover { border-color: rgba(255,255,255,0.6); }
+.hero-details { display: flex; gap: 40px; padding-top: 36px; border-top: 1px solid rgba(255,255,255,0.08); }
+.hero-detail-label { font-size: 11px; color: rgba(255,255,255,0.35); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 4px; }
+.hero-detail-val { font-size: 14px; font-weight: 600; color: rgba(255,255,255,0.85); }
+
+/* GOLD STRIP */
+.gold-strip { background: var(--gold); padding: 16px 60px; display: flex; gap: 0; justify-content: center; flex-wrap: wrap; }
+.gold-item { color: var(--dark); font-size: 13px; font-weight: 700; padding: 0 28px; white-space: nowrap; display: flex; align-items: center; gap: 8px; border-right: 1px solid rgba(45,31,14,0.2); }
+.gold-item:last-child { border-right: none; }
+
+/* SECTIONS */
+.section { padding: 90px 60px; }
+.section-cream { background: var(--cream); }
+.section-dark { background: var(--dark); }
+.section-brown { background: var(--brown); }
+.section-label { font-size: 11px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; }
+.section h2 { font-family: 'Playfair Display', serif; font-size: clamp(28px, 3.5vw, 46px); font-weight: 900; line-height: 1.15; color: var(--text); margin-bottom: 16px; }
+.section h2.light { color: #fff; }
+.section-intro { font-size: 16px; color: var(--muted); max-width: 560px; line-height: 1.75; margin-bottom: 52px; }
+.section-intro.light { color: rgba(255,255,255,0.55); }
+
+/* ABOUT / SPLIT */
+.split { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+.split-text .section-label { margin-bottom: 14px; }
+.split-text h2 { margin-bottom: 20px; }
+.split-text p { font-size: 15px; color: var(--muted); line-height: 1.8; margin-bottom: 16px; }
+.split-text p:last-of-type { margin-bottom: 32px; }
+.split-stat-row { display: flex; gap: 32px; padding: 28px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); margin: 32px 0; }
+.split-stat-num { font-family: 'Playfair Display', serif; font-size: 38px; font-weight: 900; color: var(--gold); line-height: 1; margin-bottom: 4px; }
+.split-stat-label { font-size: 12px; color: var(--muted); }
+.decorative-box { background: var(--cream); border: 1px solid var(--border); border-radius: 4px; padding: 48px 40px; text-align: center; }
+.decorative-box .big-initial { font-family: 'Playfair Display', serif; font-size: 120px; font-weight: 900; color: var(--gold); line-height: 0.8; margin-bottom: 20px; opacity: 0.3; }
+.decorative-box p { font-size: 18px; font-style: italic; color: var(--muted); line-height: 1.7; font-family: 'Playfair Display', serif; }
+
+/* MENU */
+.menu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+.menu-section-title { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; color: #fff; margin-bottom: 24px; padding-bottom: 16px; border-bottom: 1px solid rgba(201,151,58,0.25); display: flex; justify-content: space-between; align-items: baseline; }
+.menu-section-title span { font-size: 12px; font-family: 'Inter', sans-serif; color: rgba(255,255,255,0.35); font-weight: 400; letter-spacing: 0.08em; text-transform: uppercase; }
+.menu-item { display: flex; justify-content: space-between; align-items: baseline; padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,0.06); gap: 20px; }
+.menu-item:last-child { border-bottom: none; }
+.menu-item-left { flex: 1; }
+.menu-item-name { font-size: 15px; font-weight: 600; color: #fff; margin-bottom: 4px; }
+.menu-item-desc { font-size: 13px; color: rgba(255,255,255,0.4); line-height: 1.5; }
+.menu-item-price { font-family: 'Playfair Display', serif; font-size: 16px; font-weight: 700; color: var(--gold); flex-shrink: 0; }
+.menu-note { margin-top: 32px; font-size: 13px; color: rgba(255,255,255,0.35); font-style: italic; text-align: center; }
+
+/* INFO CARDS */
+.info-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.info-card { background: #fff; border: 1px solid var(--border); border-radius: 6px; padding: 32px 28px; }
+.info-card-label { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; }
+.info-card h3 { font-family: 'Playfair Display', serif; font-size: 19px; font-weight: 700; color: var(--text); margin-bottom: 14px; }
+.info-card p { font-size: 14px; color: var(--muted); line-height: 1.7; }
+.hours-row { display: flex; justify-content: space-between; font-size: 14px; padding: 8px 0; border-bottom: 1px solid var(--border); }
+.hours-row:last-child { border-bottom: none; }
+.hours-row .day { color: var(--muted); }
+.hours-row .time { font-weight: 600; color: var(--text); }
+.hours-row .closed { color: #dc2626; }
+
+/* RESERVATION */
+.reservation-section { background: var(--cream); padding: 90px 60px; }
+.reservation-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+.res-form-card { background: #fff; border: 1px solid var(--border); border-radius: 6px; padding: 40px; }
+.res-form-card h3 { font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 900; color: var(--text); margin-bottom: 28px; }
+.form-group { margin-bottom: 18px; }
+.form-group label { display: block; font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-bottom: 7px; }
+.form-group input, .form-group select, .form-group textarea { width: 100%; padding: 11px 14px; border: 1px solid var(--border); border-radius: 3px; font-size: 14px; font-family: 'Inter', sans-serif; color: var(--text); background: #fff; transition: border-color 0.15s; }
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus { outline: none; border-color: var(--gold); }
+.form-group textarea { resize: vertical; min-height: 80px; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.form-submit { width: 100%; padding: 14px; background: var(--gold); color: var(--dark); border: none; border-radius: 3px; font-size: 15px; font-weight: 700; cursor: pointer; font-family: 'Inter', sans-serif; margin-top: 8px; letter-spacing: 0.04em; transition: background 0.15s; }
+.form-submit:hover { background: #b8872e; }
+.res-info h3 { font-family: 'Playfair Display', serif; font-size: 28px; font-weight: 900; color: var(--text); margin-bottom: 16px; line-height: 1.2; }
+.res-info p { font-size: 15px; color: var(--muted); line-height: 1.75; margin-bottom: 32px; }
+.res-detail { display: flex; gap: 16px; margin-bottom: 20px; align-items: flex-start; }
+.res-icon { width: 40px; height: 40px; background: var(--gold-light); border-radius: 4px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 11px; font-weight: 700; color: var(--gold); letter-spacing: 0.04em; }
+.res-detail-label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 3px; }
+.res-detail-val { font-size: 15px; font-weight: 600; color: var(--text); }
+
+/* FOOTER */
+footer { background: var(--dark); padding: 60px 60px 32px; }
+.footer-top { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 60px; padding-bottom: 40px; border-bottom: 1px solid rgba(255,255,255,0.07); margin-bottom: 28px; }
+.footer-logo { font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 900; color: #fff; margin-bottom: 14px; }
+.footer-logo span { color: var(--gold); }
+.footer-desc { font-size: 14px; color: rgba(255,255,255,0.35); line-height: 1.75; }
+.footer-col h4 { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 18px; }
+.footer-col ul { list-style: none; }
+.footer-col li { margin-bottom: 10px; }
+.footer-col a { font-size: 14px; color: rgba(255,255,255,0.5); text-decoration: none; transition: color 0.15s; }
+.footer-col a:hover { color: #fff; }
+.footer-bottom { display: flex; justify-content: space-between; font-size: 13px; color: rgba(255,255,255,0.25); }
+.footer-bottom a { color: var(--gold); text-decoration: none; }
+
+.made-by { background: var(--gold); color: var(--dark); text-align: center; padding: 14px 20px; font-size: 13px; font-weight: 500; }
+.made-by a { color: var(--dark); font-weight: 700; text-decoration: underline; }
+
+@media (max-width: 900px) {
+  nav { padding: 0 20px; }
+  .nav-links { display: none; }
+  .hero { padding: 60px 20px; min-height: auto; }
+  .section { padding: 60px 20px; }
+  .gold-strip { padding: 16px 20px; }
+  .split { grid-template-columns: 1fr; gap: 40px; }
+  .menu-grid { grid-template-columns: 1fr; }
+  .info-grid { grid-template-columns: 1fr; }
+  .reservation-section { padding: 60px 20px; }
+  .reservation-grid { grid-template-columns: 1fr; gap: 40px; }
+  footer { padding: 48px 20px 28px; }
+  .footer-top { grid-template-columns: 1fr; gap: 32px; }
+  .footer-bottom { flex-direction: column; gap: 8px; }
+  .form-row { grid-template-columns: 1fr; }
+  .hero-details { flex-wrap: wrap; gap: 20px; }
+}
+</style>
+</head>
+<body>
+
+<div class="demo-banner">
+  This is a demo site — want one like this for your restaurant? Contact <a href="mailto:liamspencer549@gmail.com">Liam Spencer</a> &nbsp;·&nbsp; Starting from $300
+</div>
+
+<nav>
+  <a href="https://website-building-green.vercel.app" class="logo">Your<span>Restaurant</span></a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#menu">Menu</a></li>
+    <li><a href="#visit">Visit</a></li>
+    <li><a href="#reservations">Reservations</a></li>
+  </ul>
+  <div class="nav-right">
+    <span class="nav-hours">Open Tue–Sun from 5pm</span>
+    <a href="#reservations" class="btn-res">Reserve a Table</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-tag">Est. 2018 &nbsp;·&nbsp; Brisbane, QLD</div>
+    <h1>Where Every<br>Meal Becomes<br><em>A Memory.</em></h1>
+    <p class="hero-desc">A modern dining experience in the heart of Brisbane. We believe great food starts with great ingredients — locally sourced, simply prepared, beautifully presented.</p>
+    <div class="hero-ctas">
+      <a href="#reservations" class="btn-gold">Reserve a Table</a>
+      <a href="#menu" class="btn-ghost-white">View the Menu</a>
+    </div>
+    <div class="hero-details">
+      <div><div class="hero-detail-label">Location</div><div class="hero-detail-val">123 Example St, Brisbane</div></div>
+      <div><div class="hero-detail-label">Hours</div><div class="hero-detail-val">Tue–Sun &nbsp;5pm–late</div></div>
+      <div><div class="hero-detail-label">Phone</div><div class="hero-detail-val">(07) XXXX XXXX</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- GOLD STRIP -->
+<div class="gold-strip">
+  <div class="gold-item">Dine In</div>
+  <div class="gold-item">Takeaway Available</div>
+  <div class="gold-item">Private Dining</div>
+  <div class="gold-item">Function Packages</div>
+  <div class="gold-item">BYO Fridays</div>
+</div>
+
+<!-- ABOUT -->
+<section class="section" id="about">
+  <div class="split">
+    <div class="decorative-box">
+      <div class="big-initial">YR</div>
+      <p>"We believe the best meals are made from honest ingredients, prepared with care, and shared with the people you love."</p>
+    </div>
+    <div class="split-text">
+      <div class="section-label">Our Story</div>
+      <h2>Food That Feels Like Home.</h2>
+      <p>Your Restaurant was founded on a simple idea — that great food doesn't need to be complicated. We source our produce locally, write our menu around the season, and prepare every dish with the same care whether you're celebrating or just hungry on a Tuesday.</p>
+      <p>Our kitchen team brings together experience from some of Brisbane's best restaurants with a genuine love of straightforward, delicious cooking. We let the ingredients do the talking.</p>
+      <div class="split-stat-row">
+        <div><div class="split-stat-num">7+</div><div class="split-stat-label">Years in Brisbane</div></div>
+        <div><div class="split-stat-num">95%</div><div class="split-stat-label">Local produce</div></div>
+        <div><div class="split-stat-num">4.8</div><div class="split-stat-label">Google rating</div></div>
+      </div>
+      <a href="#reservations" class="btn-gold">Book a Table</a>
+    </div>
+  </div>
+</section>
+
+<!-- MENU -->
+<section class="section section-dark" id="menu">
+  <div class="section-label">What We're Serving</div>
+  <h2 class="light">Our Menu</h2>
+  <p class="section-intro light">Seasonal dishes, locally sourced. Our menu changes regularly — here's a taste of what to expect.</p>
+  <div class="menu-grid">
+    <div>
+      <div class="menu-section-title">Starters <span>To Share</span></div>
+      <div class="menu-item"><div class="menu-item-left"><div class="menu-item-name">Burrata &amp; Heirloom Tomato</div><div class="menu-item-desc">Fresh burrata, seasonal tomatoes, basil oil, sourdough</div></div><div class="menu-item-price">$18</div></div>
+      <div class="menu-item"><div class="menu-item-left"><div class="menu-item-name">Charcuterie Board</div><div class="menu-item-desc">Cured meats, house pickles, mustard, grilled bread</div></div><div class="menu-item-price">$26</div></div>
+      <div class="menu-item"><div class="menu-item-left"><div class="menu-item-name">Grilled Flatbread</div><div class="menu-item-desc">Whipped ricotta, roasted garlic, herb oil</div></div><div class="menu-item-price">$14</div></div>
+      <div class="menu-item"><div class="menu-item-left"><div class="menu-item-name">Crispy Calamari</div><div class="menu-item-desc">Lemon aioli, smoked paprika, fresh herbs</div></div><div class="menu-item-price">$16</div></div>
+    </div>
+    <div>
+      <div class="menu-section-title">Mains <span>Large Plates</span></div>
+      <div class="menu-item"><div class="menu-item-left"><div class="menu-item-name">Grilled Eye Fillet</div><div class="menu-item-desc">250g grass-fed beef, roasted potato, jus, seasonal greens</div></div><div class="menu-item-price">$48</div></div>
+      <div class="menu-item"><div class="menu-item-left"><div class="menu-item-name">Pan-Seared Barramundi</div><div class="menu-item-desc">QLD barramundi, cauliflower puree, capers, beurre blanc</div></div><div class="menu-item-price">$38</div></div>
+      <div class="menu-item"><div class="menu-item-left"><div class="menu-item-name">Mushroom Risotto</div><div class="menu-item-desc">Wild mushrooms, aged parmesan, truffle oil, fresh herbs</div></div><div class="menu-item-price">$32</div></div>
+      <div class="menu-item"><div class="menu-item-left"><div class="menu-item-name">Slow Braised Lamb Shoulder</div><div class="menu-item-desc">12-hour lamb, white bean puree, gremolata, jus</div></div><div class="menu-item-price">$44</div></div>
+    </div>
+    <div>
+      <div class="menu-section-title">Desserts <span>Sweet Finish</span></div>
+      <div class="menu-item"><div class="menu-item-left"><div class="menu-item-name">Chocolate Fondant</div><div class="menu-item-desc">Warm dark chocolate, vanilla bean ice cream</div></div><div class="menu-item-price">$16</div></div>
+      <div class="menu-item"><div class="menu-item-left"><div class="menu-item-name">Crème Brûlée</div><div class="menu-item-desc">Classic vanilla, seasonal berry compote</div></div><div class="menu-item-price">$14</div></div>
+      <div class="menu-item"><div class="menu-item-left"><div class="menu-item-name">Cheese Selection</div><div class="menu-item-desc">Three Australian cheeses, quince, crackers, honeycomb</div></div><div class="menu-item-price">$22</div></div>
+    </div>
+    <div>
+      <div class="menu-section-title">Drinks <span>To Sip</span></div>
+      <div class="menu-item"><div class="menu-item-left"><div class="menu-item-name">House Red or White</div><div class="menu-item-desc">Ask our staff for today's selection</div></div><div class="menu-item-price">$12</div></div>
+      <div class="menu-item"><div class="menu-item-left"><div class="menu-item-name">Cocktails</div><div class="menu-item-desc">Seasonal cocktail menu — see our drinks list</div></div><div class="menu-item-price">From $18</div></div>
+      <div class="menu-item"><div class="menu-item-left"><div class="menu-item-name">Non-Alcoholic</div><div class="menu-item-desc">House lemonade, sparkling water, coffee, tea</div></div><div class="menu-item-price">From $5</div></div>
+    </div>
+  </div>
+  <p class="menu-note">Menu changes seasonally. Please inform us of any dietary requirements when booking. Full menu available on request.</p>
+</section>
+
+<!-- VISIT INFO -->
+<section class="section section-cream" id="visit">
+  <div class="section-label">Plan Your Visit</div>
+  <h2>Everything You Need to Know</h2>
+  <p class="section-intro">We're located in the heart of Brisbane. Walk-ins are welcome but we recommend booking ahead, especially on weekends.</p>
+  <div class="info-grid">
+    <div class="info-card">
+      <div class="info-card-label">Opening Hours</div>
+      <h3>When We're Open</h3>
+      <div class="hours-row"><span class="day">Monday</span><span class="closed">Closed</span></div>
+      <div class="hours-row"><span class="day">Tuesday – Thursday</span><span class="time">5:00pm – 10:00pm</span></div>
+      <div class="hours-row"><span class="day">Friday</span><span class="time">5:00pm – 11:00pm</span></div>
+      <div class="hours-row"><span class="day">Saturday</span><span class="time">12:00pm – 11:00pm</span></div>
+      <div class="hours-row"><span class="day">Sunday</span><span class="time">12:00pm – 9:00pm</span></div>
+    </div>
+    <div class="info-card">
+      <div class="info-card-label">Location &amp; Parking</div>
+      <h3>Find Us</h3>
+      <p>123 Example Street<br>Brisbane CBD, QLD 4000</p>
+      <br>
+      <p style="font-size:14px;color:var(--muted);">Street parking available on Example St and nearby streets after 6pm. Wilson Parking on nearby road. 5 min walk from Central Station.</p>
+    </div>
+    <div class="info-card">
+      <div class="info-card-label">Dining Options</div>
+      <h3>How We Can Help</h3>
+      <p style="font-size:14px;color:var(--muted);line-height:1.75;">
+        <strong style="color:var(--text);">Dine In</strong> — A la carte dining, 7 nights<br><br>
+        <strong style="color:var(--text);">Takeaway</strong> — Available Thurs–Sun<br><br>
+        <strong style="color:var(--text);">Private Events</strong> — Full venue hire available for groups 20–80<br><br>
+        <strong style="color:var(--text);">Functions</strong> — Set menus from $65pp
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- RESERVATIONS -->
+<section class="reservation-section" id="reservations">
+  <div class="reservation-grid">
+    <div class="res-info">
+      <div class="section-label">Make a Booking</div>
+      <h3>Reserve Your Table</h3>
+      <p>We'd love to have you. Fill out the form to request a reservation and we'll confirm by email within a few hours. For groups of 10 or more, please call us directly.</p>
+      <div class="res-detail"><div class="res-icon">TEL</div><div><div class="res-detail-label">Phone</div><div class="res-detail-val">(07) XXXX XXXX</div></div></div>
+      <div class="res-detail"><div class="res-icon">EMAIL</div><div><div class="res-detail-label">Email</div><div class="res-detail-val">bookings@yourrestaurant.com.au</div></div></div>
+      <div class="res-detail"><div class="res-icon">ADDR</div><div><div class="res-detail-label">Address</div><div class="res-detail-val">123 Example St, Brisbane CBD</div></div></div>
+    </div>
+    <div class="res-form-card">
+      <h3>Request a Reservation</h3>
+      <div class="form-row">
+        <div class="form-group"><label>First Name</label><input type="text" placeholder="Sarah"></div>
+        <div class="form-group"><label>Last Name</label><input type="text" placeholder="Jones"></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label>Date</label><input type="date"></div>
+        <div class="form-group"><label>Time</label><select><option>5:00 PM</option><option>5:30 PM</option><option>6:00 PM</option><option>6:30 PM</option><option>7:00 PM</option><option>7:30 PM</option><option>8:00 PM</option></select></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label>Guests</label><select><option>1 Guest</option><option>2 Guests</option><option>3 Guests</option><option>4 Guests</option><option>5 Guests</option><option>6+ Guests</option></select></div>
+        <div class="form-group"><label>Phone</label><input type="tel" placeholder="04XX XXX XXX"></div>
+      </div>
+      <div class="form-group"><label>Special Requests</label><textarea placeholder="Dietary requirements, occasions, accessibility needs..."></textarea></div>
+      <button class="form-submit">Request Reservation</button>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-top">
+    <div><div class="footer-logo">Your<span>Restaurant</span></div><p class="footer-desc">Modern dining in Brisbane. Locally sourced, beautifully prepared, and best enjoyed with good company.</p></div>
+    <div class="footer-col"><h4>Explore</h4><ul><li><a href="#">About Us</a></li><li><a href="#">Our Menu</a></li><li><a href="#">Private Dining</a></li><li><a href="#">Functions</a></li><li><a href="#">Gift Vouchers</a></li></ul></div>
+    <div class="footer-col"><h4>Visit</h4><ul><li><a href="#">123 Example St, Brisbane</a></li><li><a href="#">(07) XXXX XXXX</a></li><li><a href="#">bookings@yourrestaurant.com.au</a></li><li><a href="#">Tue–Sun from 5pm</a></li></ul></div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2025 Your Restaurant. All rights reserved.</p>
+    <p>Site by <a href="https://website-building-green.vercel.app">Liam Spencer</a></p>
+  </div>
+</footer>
+
+<div class="made-by">
+  Want a website like this for your restaurant? <a href="https://website-building-green.vercel.app">liamspencer549@gmail.com</a> &nbsp;·&nbsp; Starting from $300
+</div>
+
+</body>
+</html>
